@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:final_porject_edspert/model/course/course_response.dart';
 
 class CourseRepository {
-  Future<List<CourseData>> getCourseList() async {
+  Future<List<CourseData>> getCourseList(String majorName) async {
     try {
       const url =
           'https://edspert.widyaedu.com/exercise/data_course?major_name=IPA&user_email=testerngbayu@gmail.com';
