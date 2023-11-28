@@ -18,3 +18,5 @@ final class CourseFailed extends CourseState {
 
   CourseFailed({required this.errorMessage});
 }
+
+

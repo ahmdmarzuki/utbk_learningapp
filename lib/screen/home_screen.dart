@@ -1,6 +1,5 @@
-import 'package:final_porject_edspert/blocs/bloc/course_bloc.dart';
-import 'package:final_porject_edspert/model/banner/banner_respone.dart';
-import 'package:final_porject_edspert/model/course/course_response.dart';
+import 'package:final_porject_edspert/blocs/banner/banner_bloc.dart';
+import 'package:final_porject_edspert/blocs/course/course_bloc.dart';
 import 'package:final_porject_edspert/repository/banner_repo.dart';
 import 'package:final_porject_edspert/repository/course_repo.dart';
 import 'package:final_porject_edspert/screen/all_card_list_screen.dart';
@@ -9,43 +8,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  final courseRepository = CourseRepository();
-  final bannerRepository = BannerRepository();
-
-  List<CourseData> courseList = [];
-  List<BannerData> bannerList = [];
-
-  @override
-  void initState() {
-    getCourseList();
-    getBannerList();
-    super.initState();
-  }
-
-  void getCourseList() async {
-    courseList = await courseRepository.getCourseList('IPA');
-    setState(() {});
-  }
-
-  void getBannerList() async {
-    bannerList = await bannerRepository.getBannerList();
-
-    setState(() {});
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return BlocProvider<CourseBloc>(
-      create: (context) => CourseBloc(courseRepository: CourseRepository())
-        ..add(GetCouseListEvent(majorName: 'IPA')),
+    return MultiBlocProvider(
+      providers: [
+        // BlocProvider<CourseExerciseBloc>(
+        //   create: (context) =>
+        //       CourseExerciseBloc(courseRepository: CourseRepository())
+        //         ..add(GetCourseExerciseEvent(courseId: '1')),
+        // ),
+        BlocProvider<BannerBloc>(
+          create: (context) => BannerBloc(bannerRepository: BannerRepository())
+            ..add(GetBannerListEvent()),
+        ),
+      ],
       child: Scaffold(
         backgroundColor: const Color(0xFFF3F7F8),
         appBar: AppBar(
@@ -113,28 +92,46 @@ class _HomeScreenState extends State<HomeScreen> {
                         fontWeight: FontWeight.w700,
                       ),
                     ),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return AllCardListScreen(courseList: courseList);
+                    BlocBuilder<CourseBloc, CourseState>(
+                      builder: (context, state) {
+                        if (state is CourseLoading) {}
+                        if (state is CourseSuccess) {
+                          return TextButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) {
+                                    return AllCardListScreen(
+                                        courseList: state.courseList);
+                                  },
+                                ),
+                              );
                             },
+                            child: Text(
+                              "Lihat Semua",
+                              style: GoogleFonts.poppins(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                                color: const Color(0xFF3A7FD5),
+                              ),
+                            ),
+                          );
+                        }
+                        return Text(
+                          "Lihat Semua",
+                          style: GoogleFonts.poppins(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            color: const Color(0xFF3A7FD5),
                           ),
                         );
                       },
-                      child: Text(
-                        "Lihat Semua",
-                        style: GoogleFonts.poppins(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                          color: const Color(0xFF3A7FD5),
-                        ),
-                      ),
                     ),
                   ],
                 ),
+
+                // Course Bloc Builder
                 BlocBuilder<CourseBloc, CourseState>(
                   builder: (context, state) {
                     print(state.runtimeType);
@@ -166,8 +163,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         fontWeight: FontWeight.w700,
                       ),
                     ),
-                    bannerList.isNotEmpty
-                        ? SizedBox(
+                    BlocBuilder<BannerBloc, BannerState>(
+                      builder: (context, state) {
+                        if (state is BannerLoading) {}
+
+                        if (state is BannerSucces) {
+                          return SizedBox(
                             height: 146,
                             child: ListView.separated(
                               // physics: const NeverScrollableScrollPhysics(),
@@ -175,7 +176,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               shrinkWrap: true,
                               separatorBuilder: (context, index) =>
                                   const SizedBox(width: 8),
-                              itemCount: bannerList.length,
+                              itemCount: state.bannerList.length,
                               itemBuilder: (context, index) {
                                 return ClipRRect(
                                   borderRadius: BorderRadius.circular(16),
@@ -183,7 +184,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     height: 146,
                                     width: 284,
                                     child: Image.network(
-                                      bannerList[index].eventImage,
+                                      state.bannerList[index].eventImage,
                                       errorBuilder:
                                           (context, error, stackTrace) {
                                         return Center(
@@ -198,8 +199,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                 );
                               },
                             ),
-                          )
-                        : const CircularProgressIndicator(),
+                          );
+                        }
+                        return const Center(child: CircularProgressIndicator());
+                      },
+                    )
                   ],
                 )
               ],

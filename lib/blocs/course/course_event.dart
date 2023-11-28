@@ -3,9 +3,10 @@ part of 'course_bloc.dart';
 @immutable
 sealed class CourseEvent {}
 
-class GetCouseListEvent extends CourseEvent{
+class GetCourseListEvent extends CourseEvent {
   final String majorName;
 
-  GetCouseListEvent({required this.majorName});
-
+  GetCourseListEvent({required this.majorName});
 }
+
+

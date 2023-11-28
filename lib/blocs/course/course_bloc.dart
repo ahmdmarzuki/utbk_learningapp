@@ -9,15 +9,17 @@ part 'course_state.dart';
 class CourseBloc extends Bloc<CourseEvent, CourseState> {
   final CourseRepository courseRepository;
 
-  CourseBloc({required this.courseRepository} ) : super(CourseInitial()) {
-    on<CourseEvent>((events, emit) async {
-      if (events is GetCouseListEvent) {
-        emit(CourseLoading());
+  CourseBloc({required this.courseRepository}) : super(CourseInitial()) {
+    on<CourseEvent>(
+      (events, emit) async {
+        if (events is GetCourseListEvent) {
+          emit(CourseLoading());
 
-        final data = await courseRepository.getCourseList(events.majorName);
+          final data = await courseRepository.getCourseList(events.majorName);
 
-        emit(CourseSuccess(courseList: data));
-      }
-    });
+          emit(CourseSuccess(courseList: data));
+        } 
+      },
+    );
   }
 }
