@@ -1,8 +1,12 @@
 import 'package:final_porject_edspert/blocs/banner/banner_bloc.dart';
 import 'package:final_porject_edspert/blocs/course/course_bloc.dart';
 import 'package:final_porject_edspert/repository/banner_repo.dart';
-import 'package:final_porject_edspert/repository/course_repo.dart';
 import 'package:final_porject_edspert/screen/all_card_list_screen.dart';
+import 'package:final_porject_edspert/src/utils/color/colors.dart';
+import 'package:final_porject_edspert/src/utils/text/banner_text.dart';
+import 'package:final_porject_edspert/src/utils/text/heading.dart';
+import 'package:final_porject_edspert/src/utils/text/appbar_heading.dart';
+import 'package:final_porject_edspert/src/utils/text/sub_heading1.dart';
 import 'package:final_porject_edspert/widgets/course_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,32 +19,19 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        // BlocProvider<CourseExerciseBloc>(
-        //   create: (context) =>
-        //       CourseExerciseBloc(courseRepository: CourseRepository())
-        //         ..add(GetCourseExerciseEvent(courseId: '1')),
-        // ),
         BlocProvider<BannerBloc>(
           create: (context) => BannerBloc(bannerRepository: BannerRepository())
             ..add(GetBannerListEvent()),
         ),
       ],
       child: Scaffold(
-        backgroundColor: const Color(0xFFF3F7F8),
+        backgroundColor: HexColor.whiteBackground,
         appBar: AppBar(
           title: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                "Hello, Marzuki",
-                style: GoogleFonts.poppins(
-                    fontSize: 12, fontWeight: FontWeight.w600),
-              ),
-              Text(
-                "Selamat Datang",
-                style: GoogleFonts.poppins(
-                    fontSize: 12, fontWeight: FontWeight.w400),
-              )
+              AppbarHeading(text: "Hello, Marzuki", color: HexColor.black),
+              SubHeading1(text: "Selamat Datang")
             ],
           ),
           actions: const [
@@ -60,23 +51,19 @@ class HomeScreen extends StatelessWidget {
                 Container(
                   height: 160,
                   decoration: BoxDecoration(
-                    color: const Color(0xFF3A7FD5),
+                    color: HexColor.blue_,
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 60, left: 23),
-                        child: Text(
-                          "Mau kerjain\nlatihan soal\napa hari ini?",
-                          style: GoogleFonts.poppins(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w700,
-                              color: Colors.white),
-                        ),
-                      ),
+                      const Padding(
+                          padding: EdgeInsets.only(bottom: 60, left: 23),
+                          child: BannerText(
+                            text: "Mau kerjain\nlatihan soal\napa hari ini?",
+                            color: Colors.white,
+                          )),
                       Image.asset('assets/images/man_with_a_phone.png')
                     ],
                   ),
@@ -85,38 +72,28 @@ class HomeScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      "Pilih Pelajaran",
-                      style: GoogleFonts.poppins(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
+                    Heading(text: "Pilih Pelajaran", color: HexColor.black),
                     BlocBuilder<CourseBloc, CourseState>(
                       builder: (context, state) {
                         if (state is CourseLoading) {}
                         if (state is CourseSuccess) {
                           return TextButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) {
-                                    return AllCardListScreen(
-                                        courseList: state.courseList);
-                                  },
-                                ),
-                              );
-                            },
-                            child: Text(
-                              "Lihat Semua",
-                              style: GoogleFonts.poppins(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400,
-                                color: const Color(0xFF3A7FD5),
-                              ),
-                            ),
-                          );
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) {
+                                      return AllCardListScreen(
+                                          courseList: state.courseList);
+                                    },
+                                  ),
+                                );
+                              },
+                              child:
+                                  SubHeading1(
+                                text: "Lihat Semua",
+                                color: HexColor.blue_,
+                              ));
                         }
                         return Text(
                           "Lihat Semua",

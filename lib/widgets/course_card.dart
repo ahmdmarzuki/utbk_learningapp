@@ -1,10 +1,12 @@
-import 'package:final_porject_edspert/blocs/course/course_bloc.dart';
 import 'package:final_porject_edspert/blocs/course_exercise/course_exercise_bloc.dart';
 import 'package:final_porject_edspert/model/course/course_response.dart';
 import 'package:final_porject_edspert/screen/course_exercise_screen.dart';
+import 'package:final_porject_edspert/widgets/card_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
+
+import '../src/utils/text/heading.dart';
+import '../src/utils/text/sub_heading1.dart';
 
 class CourseCard extends StatelessWidget {
   final CourseData course;
@@ -24,7 +26,9 @@ class CourseCard extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const CourseExerciseScreen(),
+                builder: (context) => CourseExerciseScreen(
+                  courseTitle: course.courseName,
+                ),
               ),
             );
           },
@@ -35,40 +39,37 @@ class CourseCard extends StatelessWidget {
               padding: const EdgeInsets.all(18),
               child: Row(
                 children: [
-                  Container(
-                    padding: EdgeInsets.all(12),
-                    height: 53,
-                    width: 53,
-                    decoration: BoxDecoration(
-                        color: Colors.grey.shade100,
-                        borderRadius: BorderRadius.circular(8)),
-                    child: Image.network(
-                      course.urlCover,
-                      errorBuilder: (context, error, stackTrace) {
-                        return Center(
-                            child: Text(
-                          "No Img",
-                          style: GoogleFonts.poppins(fontSize: 8),
-                        ));
-                      },
-                    ),
-                  ),
+                  // Container(
+                  //   padding: EdgeInsets.all(12),
+                  //   height: 53,
+                  //   width: 53,
+                  //   decoration: BoxDecoration(
+                  //       color: HexColor.imageBackground,
+                  //       borderRadius: BorderRadius.circular(8)),
+                  //   child: Image.network(
+                  //     course.urlCover,
+                  //     errorBuilder: (context, error, stackTrace) {
+                  //       return Center(
+                  //           child: Text(
+                  //         "No Img",
+                  //         style: GoogleFonts.poppins(fontSize: 8),
+                  //       ));
+                  //     },
+                  //   ),
+                  // ),
+                  CardImage(image: course.urlCover),
                   const SizedBox(width: 8),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          course.courseName,
-                          style: GoogleFonts.poppins(
-                              fontSize: 14, fontWeight: FontWeight.w600),
+                        Heading(
+                          text: course.courseName,
+                          color: Colors.black,
                         ),
-                        Text(
-                          "${course.jumlahDone}/${course.jumlahMateri} "
-                          "Paket Latihan Soal",
-                          style: GoogleFonts.poppins(
-                              fontSize: 12, color: Colors.grey.shade700),
-                        ),
+                        SubHeading1(
+                            text: "${course.jumlahDone}/${course.jumlahMateri} "
+                                "Paket Latihan Soal"),
                         const SizedBox(height: 11),
                         const LinearProgressIndicator(
                           value: 0.5,

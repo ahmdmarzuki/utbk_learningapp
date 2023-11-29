@@ -16,7 +16,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 32),
+          padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 42),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -69,14 +69,14 @@ class _LoginScreenState extends State<LoginScreen> {
                       );
                     },
                   ),
-                  SizedBox(height: 25),
-                  CustomButton(
+                  const SizedBox(height: 25),
+                  const CustomButton(
                     icon: 'assets/icon/apple-logo.png',
                     text: "Masuk dengan Apple ID",
                     bgColor: Colors.black,
                     textColor: Colors.white,
                   ),
-                  SizedBox(height: 70)
+                  const SizedBox(height: 70)
                 ],
               )
             ],
