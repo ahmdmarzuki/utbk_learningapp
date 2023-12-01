@@ -1,6 +1,7 @@
-import 'package:final_porject_edspert/src/utils/color/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../utils/color/colors.dart';
 
 // ignore: must_be_immutable
 class CardImage extends StatelessWidget {

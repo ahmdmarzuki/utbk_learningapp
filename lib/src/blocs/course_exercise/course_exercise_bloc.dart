@@ -1,7 +1,8 @@
 import 'package:bloc/bloc.dart';
-import 'package:final_porject_edspert/model/course/course_exercise_response.dart';
-import 'package:final_porject_edspert/repository/course_repo.dart';
 import 'package:meta/meta.dart';
+
+import '../../model/course/course_exercise_response.dart';
+import '../../repository/course_repo.dart';
 
 part 'course_exercise_event.dart';
 part 'course_exercise_state.dart';

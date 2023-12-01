@@ -1,12 +1,12 @@
-import 'package:final_porject_edspert/blocs/course_exercise/course_exercise_bloc.dart';
-import 'package:final_porject_edspert/model/course/course_response.dart';
-import 'package:final_porject_edspert/screen/course_exercise_screen.dart';
-import 'package:final_porject_edspert/widgets/card_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../src/utils/text/heading.dart';
-import '../src/utils/text/sub_heading1.dart';
+import '../blocs/course_exercise/course_exercise_bloc.dart';
+import '../model/course/course_response.dart';
+import '../screen/course_exercise_screen.dart';
+import '../utils/text/heading.dart';
+import '../utils/text/sub_heading1.dart';
+import 'card_image.dart';
 
 class CourseCard extends StatelessWidget {
   final CourseData course;

@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:final_porject_edspert/model/banner/banner_respone.dart';
+
+import '../model/banner/banner_respone.dart';
 
 class BannerRepository {
   Future<List<BannerData>> getBannerList() async {

@@ -1,8 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:final_porject_edspert/constants/learning_constants.dart';
-import 'package:final_porject_edspert/model/course/course_exercise_response.dart';
-import 'package:final_porject_edspert/model/course/course_response.dart';
-import 'package:final_porject_edspert/model/headers/headers.dart';
+
+import '../model/course/course_exercise_response.dart';
+import '../model/course/course_response.dart';
 
 class CourseRepository {
   Future<List<CourseData>> getCourseList(String majorName) async {

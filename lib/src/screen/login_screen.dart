@@ -1,7 +1,8 @@
-import 'package:final_porject_edspert/screen/home_screen.dart';
-import 'package:final_porject_edspert/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../widgets/custom_button.dart';
+import 'home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

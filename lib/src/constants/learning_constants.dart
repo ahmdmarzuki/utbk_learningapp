@@ -1,4 +1,5 @@
-import 'package:final_porject_edspert/model/headers/headers.dart';
+
+import '../model/headers/headers.dart';
 
 class LearningConstant {
   static LearningHeaders get headers =>

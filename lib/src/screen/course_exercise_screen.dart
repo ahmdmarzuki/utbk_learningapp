@@ -1,11 +1,12 @@
-import 'package:final_porject_edspert/blocs/course_exercise/course_exercise_bloc.dart';
-import 'package:final_porject_edspert/src/utils/color/colors.dart';
-import 'package:final_porject_edspert/src/utils/text/banner_text.dart';
-import 'package:final_porject_edspert/src/utils/text/heading.dart';
-import 'package:final_porject_edspert/src/utils/text/sub_heading1.dart';
-import 'package:final_porject_edspert/widgets/card_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../blocs/course_exercise/course_exercise_bloc.dart';
+import '../utils/color/colors.dart';
+import '../utils/text/banner_text.dart';
+import '../utils/text/heading.dart';
+import '../utils/text/sub_heading1.dart';
+import '../widgets/card_image.dart';
 
 class CourseExerciseScreen extends StatelessWidget {
   final String courseTitle;

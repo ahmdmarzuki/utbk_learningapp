@@ -1,7 +1,8 @@
-import 'package:final_porject_edspert/repository/banner_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:final_porject_edspert/model/banner/banner_respone.dart';
 import 'package:meta/meta.dart';
+
+import '../../model/banner/banner_respone.dart';
+import '../../repository/banner_repo.dart';
 
 part 'banner_event.dart';
 part 'banner_state.dart';

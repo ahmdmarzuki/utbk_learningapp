@@ -1,7 +1,8 @@
-import 'package:final_porject_edspert/model/course/course_response.dart';
-import 'package:final_porject_edspert/widgets/course_card.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../model/course/course_response.dart';
+import '../widgets/course_card.dart';
 
 class AllCardListScreen extends StatelessWidget {
   final List<CourseData> courseList;
