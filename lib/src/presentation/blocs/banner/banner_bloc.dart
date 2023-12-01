@@ -1,6 +1,6 @@
-import 'package:final_porject_edspert/repository/banner_repo.dart';
+import 'package:final_porject_edspert/src/data/repository/banner_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:final_porject_edspert/model/banner/banner_respone.dart';
+import 'package:final_porject_edspert/src/data/model/banner/banner_respone.dart';
 import 'package:meta/meta.dart';
 
 part 'banner_event.dart';

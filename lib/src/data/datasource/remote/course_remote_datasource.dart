@@ -1,11 +1,11 @@
 import 'package:dio/dio.dart';
-import 'package:final_porject_edspert/constants/learning_constants.dart';
-import 'package:final_porject_edspert/model/course/course_exercise_response.dart';
-import 'package:final_porject_edspert/model/course/course_response.dart';
-import 'package:final_porject_edspert/model/headers/headers.dart';
+import 'package:final_porject_edspert/src/data/model/course/course_exercise_response.dart';
+import 'package:final_porject_edspert/src/data/model/course/course_response.dart';
+import 'package:final_porject_edspert/src/data/model/headers/headers.dart';
+import 'package:final_porject_edspert/src/domain/entity/course_list_response_entity.dart';
 
-class CourseRepository {
-  Future<List<CourseData>> getCourseList(String majorName) async {
+class CourseRemoteDataSource {
+  Future<List<CourseDataModel>> getCourseList(String majorName) async {
     try {
       const url =
           'https://edspert.widyaedu.com/exercise/data_course?major_name=IPA&user_email=testerngbayu@gmail.com';
@@ -16,7 +16,7 @@ class CourseRepository {
         ),
       );
 
-      final courseResponse = CourseResponse.fromJson(response.data);
+      final courseResponse = CourseListResponseModel.fromJson(response.data);
 
       return courseResponse.data;
     } catch (e) {

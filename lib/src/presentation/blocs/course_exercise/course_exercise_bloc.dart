@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:final_porject_edspert/model/course/course_exercise_response.dart';
-import 'package:final_porject_edspert/repository/course_repo.dart';
+import 'package:final_porject_edspert/src/data/model/course/course_exercise_response.dart';
+import 'package:final_porject_edspert/src/data/repository/course_repository_impl.dart';
 import 'package:meta/meta.dart';
 
 part 'course_exercise_event.dart';

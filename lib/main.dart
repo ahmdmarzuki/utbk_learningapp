@@ -1,10 +1,11 @@
-import 'package:final_porject_edspert/blocs/course_exercise/course_exercise_bloc.dart';
-import 'package:final_porject_edspert/repository/course_repo.dart';
-import 'package:final_porject_edspert/screen/splashScreen.dart';
+import 'package:final_porject_edspert/src/data/repository/course_repository_impl.dart';
+import 'package:final_porject_edspert/src/presentation/screen/splashScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'blocs/course/course_bloc.dart';
+import 'src/presentation/blocs/course/course_bloc.dart';
+import 'src/presentation/blocs/course_exercise/course_exercise_bloc.dart';
+
 
 void main() {
   runApp(const MyApp());

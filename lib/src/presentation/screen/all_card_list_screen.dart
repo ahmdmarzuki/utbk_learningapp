@@ -1,10 +1,10 @@
-import 'package:final_porject_edspert/model/course/course_response.dart';
+import 'package:final_porject_edspert/src/data/model/course/course_response.dart';
 import 'package:final_porject_edspert/widgets/course_card.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AllCardListScreen extends StatelessWidget {
-  final List<CourseData> courseList;
+  final List<CourseDataModel> courseList;
   const AllCardListScreen({super.key, required this.courseList});
 
   @override

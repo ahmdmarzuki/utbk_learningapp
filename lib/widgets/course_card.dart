@@ -1,15 +1,15 @@
-import 'package:final_porject_edspert/blocs/course_exercise/course_exercise_bloc.dart';
-import 'package:final_porject_edspert/model/course/course_response.dart';
-import 'package:final_porject_edspert/screen/course_exercise_screen.dart';
+import 'package:final_porject_edspert/src/data/model/course/course_response.dart';
+import 'package:final_porject_edspert/src/presentation/screen/course_exercise_screen.dart';
 import 'package:final_porject_edspert/widgets/card_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../src/presentation/blocs/course_exercise/course_exercise_bloc.dart';
 import '../src/utils/text/heading.dart';
 import '../src/utils/text/sub_heading1.dart';
 
 class CourseCard extends StatelessWidget {
-  final CourseData course;
+  final CourseDataModel course;
 
   const CourseCard({super.key, required this.course});
 
@@ -39,24 +39,6 @@ class CourseCard extends StatelessWidget {
               padding: const EdgeInsets.all(18),
               child: Row(
                 children: [
-                  // Container(
-                  //   padding: EdgeInsets.all(12),
-                  //   height: 53,
-                  //   width: 53,
-                  //   decoration: BoxDecoration(
-                  //       color: HexColor.imageBackground,
-                  //       borderRadius: BorderRadius.circular(8)),
-                  //   child: Image.network(
-                  //     course.urlCover,
-                  //     errorBuilder: (context, error, stackTrace) {
-                  //       return Center(
-                  //           child: Text(
-                  //         "No Img",
-                  //         style: GoogleFonts.poppins(fontSize: 8),
-                  //       ));
-                  //     },
-                  //   ),
-                  // ),
                   CardImage(image: course.urlCover),
                   const SizedBox(width: 8),
                   Expanded(

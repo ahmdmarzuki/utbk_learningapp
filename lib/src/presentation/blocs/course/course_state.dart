@@ -8,7 +8,7 @@ final class CourseInitial extends CourseState {}
 final class CourseLoading extends CourseState {}
 
 final class CourseSuccess extends CourseState {
-  final List<CourseData> courseList;
+  final List<CourseDataModel> courseList;
 
   CourseSuccess({required this.courseList});
 }
@@ -18,5 +18,3 @@ final class CourseFailed extends CourseState {
 
   CourseFailed({required this.errorMessage});
 }
-
-

@@ -1,7 +1,5 @@
-import 'package:final_porject_edspert/blocs/banner/banner_bloc.dart';
-import 'package:final_porject_edspert/blocs/course/course_bloc.dart';
-import 'package:final_porject_edspert/repository/banner_repo.dart';
-import 'package:final_porject_edspert/screen/all_card_list_screen.dart';
+import 'package:final_porject_edspert/src/data/repository/banner_repo.dart';
+import 'package:final_porject_edspert/src/presentation/screen/all_card_list_screen.dart';
 import 'package:final_porject_edspert/src/utils/color/colors.dart';
 import 'package:final_porject_edspert/src/utils/text/banner_text.dart';
 import 'package:final_porject_edspert/src/utils/text/heading.dart';
@@ -11,6 +9,9 @@ import 'package:final_porject_edspert/widgets/course_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../blocs/banner/banner_bloc.dart';
+import '../blocs/course/course_bloc.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
