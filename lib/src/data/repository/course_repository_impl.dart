@@ -1,17 +1,19 @@
 import 'package:dio/dio.dart';
 import 'package:final_porject_edspert/src/data/datasource/remote/course_remote_datasource.dart';
 import 'package:final_porject_edspert/src/data/datasource/remote/question_remote_datasource.dart';
-import 'package:final_porject_edspert/src/domain/entity/course_list_entity.dart';
 import 'package:final_porject_edspert/src/domain/entity/exercise_list_entity.dart';
 import 'package:final_porject_edspert/src/domain/repository/course_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import '../../domain/entity/course_entity.dart';
+import '../../domain/entity/exercise_result_response_entity.dart';
 import '../../domain/entity/question_list_entity.dart';
 import '../model/course_exercise_response.dart';
 import '../model/course_response.dart';
 import '../model/question_response_model.dart';
+import '../model/submit_answer_request_model.dart';
 
-class CourseRepositoryImpl implements CourseRepository{
+class CourseRepositoryImpl implements CourseRepository {
   // final QuestionRemoteDatasource questionRemoteDatasource;
   final CourseRemoteDatasource remoteDatasource;
 
@@ -44,9 +46,9 @@ class CourseRepositoryImpl implements CourseRepository{
     return data.data;
   }
 
-
   @override
-  Future<List<ExerciseDataEntity>?> getExercisesByCourse(String courseId) async {
+  Future<List<ExerciseDataEntity>?> getExercisesByCourse(
+      String courseId) async {
     final response = await remoteDatasource.getExercises(
       courseId: courseId,
       email: FirebaseAuth.instance.currentUser?.email ?? '',
@@ -77,9 +79,60 @@ class CourseRepositoryImpl implements CourseRepository{
     return data.data;
   }
 
+  @override
+  Future<ExerciseResultResponseEntity?> getExerciseResult(
+      String exerciseId) async {
+    final response = await remoteDatasource.getExerciseResult(
+      exerciseId: exerciseId,
+      email: FirebaseAuth.instance.currentUser?.email ?? '',
+    );
+
+    if (response.data?.result?.jumlahScore == null) {
+      return null;
+    }
+
+    final data = ExerciseResultResponseEntity(
+      status: response.status ?? -1,
+      message: response.message ?? '',
+      data: ExerciseResultDataEntity(
+        exercise: Exercise(
+          exerciseId: response.data?.exercise?.exerciseId ?? '',
+          exerciseCode: response.data?.exercise?.exerciseCode ?? '',
+          fileCourse: response.data?.exercise?.fileCourse ?? '',
+          icon: response.data?.exercise?.icon ?? '',
+          exerciseTitle: response.data?.exercise?.exerciseTitle ?? '',
+          exerciseDescription:
+              response.data?.exercise?.exerciseDescription ?? '',
+          exerciseInstruction:
+              response.data?.exercise?.exerciseInstruction ?? '',
+          countQuestion: response.data?.exercise?.countQuestion ?? '',
+          classFk: response.data?.exercise?.classFk ?? '',
+          courseFk: response.data?.exercise?.courseFk ?? '',
+          courseContentFk: response.data?.exercise?.courseContentFk ?? '',
+          subCourseContentFk: response.data?.exercise?.subCourseContentFk ?? '',
+          creatorId: response.data?.exercise?.creatorId ?? '',
+          creatorName: response.data?.exercise?.creatorName ?? '',
+          examFrom: response.data?.exercise?.examFrom ?? '',
+          accessType: response.data?.exercise?.accessType ?? '',
+          exerciseOrder: response.data?.exercise?.exerciseOrder ?? '',
+          exerciseStatus: response.data?.exercise?.exerciseStatus ?? '',
+          dateCreate: response.data?.exercise?.dateCreate ?? '',
+          dateUpdate: response.data?.exercise?.dateUpdate ?? '',
+        ),
+        result: Result(
+          jumlahBenar: response.data?.result?.jumlahBenar ?? '',
+          jumlahSalah: response.data?.result?.jumlahSalah ?? '',
+          jumlahTidak: response.data?.result?.jumlahTidak ?? '',
+          jumlahScore: response.data?.result?.jumlahScore ?? '',
+        ),
+      ),
+    );
+
+    return data;
+  }
+
   Future<List<QuestionListDataEntity>?> getQuestionsByExercise(
       String exerciseId) async {
-    
     final response =
         await remoteDatasource.getQuestions(exerciseId: exerciseId, email: '');
 
@@ -116,7 +169,12 @@ class CourseRepositoryImpl implements CourseRepository{
     return data.data;
   }
 
-  
+  @override
+  Future<bool> submitExerciseAnswer(SubmitAnswerRequestModel request) async {
+    final result = await remoteDatasource.submitAnswers(request: request);
+
+    return result;
+  }
 
   // Future<List<QuestionData>> getQuestionList(String exerciseId) async {
   //   try {

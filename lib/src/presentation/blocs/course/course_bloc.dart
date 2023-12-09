@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
-import 'package:final_porject_edspert/src/domain/entity/course_list_entity.dart';
 import 'package:meta/meta.dart';
 
+import '../../../domain/entity/course_entity.dart';
 import '../../../domain/usecases/courses_usecases/get_courses_usecases.dart';
 
 part 'course_event.dart';

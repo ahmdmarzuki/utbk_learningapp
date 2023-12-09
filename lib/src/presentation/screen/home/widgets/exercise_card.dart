@@ -30,10 +30,7 @@ class ExerciseCard extends StatelessWidget {
 
             Navigator.push(
               context,
-              MaterialPageRoute(
-                  builder: (context) => QuestionScreen(
-                        exercise: exercise,
-                      )),
+              MaterialPageRoute(builder: (context) => const QuestionScreen()),
             );
           },
           child: Container(

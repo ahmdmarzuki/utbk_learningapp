@@ -4,7 +4,10 @@ import 'package:final_porject_edspert/src/data/datasource/remote/course_remote_d
 import 'package:final_porject_edspert/src/domain/repository/course_repository.dart';
 import 'package:final_porject_edspert/src/domain/usecases/courses_usecases/get_courses_usecases.dart';
 import 'package:final_porject_edspert/src/domain/usecases/courses_usecases/get_exercise_by_courses_usecase.dart';
+import 'package:final_porject_edspert/src/domain/usecases/courses_usecases/get_exercise_result_usecase.dart';
 import 'package:final_porject_edspert/src/domain/usecases/courses_usecases/get_question_by_exercise_usecase.dart';
+import 'package:final_porject_edspert/src/domain/usecases/courses_usecases/submit_exercise_answer.dart';
+import 'package:final_porject_edspert/src/presentation/blocs/question_bloc/question_form_cubit/question_form_cubit.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -55,9 +58,15 @@ class MyApp extends StatelessWidget {
           CourseRepository repo = CourseRepositoryImpl(
               remoteDatasource: CourseRemoteDatasource(client: Dio()));
           return QuestionBloc(
-              getQuestionByExerciseUsecase:
-                  GetQuestionByExerciseUsecase(repository: repo));
+            getQuestionByExerciseUsecase:
+                GetQuestionByExerciseUsecase(repository: repo),
+            submitExerciseAnswerUsecase:
+                SubmitExerciseAnswerUsecase(repository: repo),
+            getExercisesResultUsecase:
+                GetExercisesResultUsecase(repository: repo),
+          );
         }),
+        BlocProvider(create: (context) => QuestionFormCubit()),
         // BlocProvider(
         //   create: (context) =>
         //       CourseBloc(courseRepository: CourseRepositoryImpl())

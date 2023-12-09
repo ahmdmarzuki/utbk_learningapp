@@ -1,7 +1,7 @@
-import 'package:final_porject_edspert/src/domain/entity/course_list_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../domain/entity/course_entity.dart';
 import '../../../blocs/course_exercise/course_exercise_bloc.dart';
 import '../course_exercise_screen.dart';
 import '../../../../utils/text/heading.dart';

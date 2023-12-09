@@ -1,4 +1,5 @@
-import 'package:final_porject_edspert/src/domain/entity/course_list_entity.dart';
+
+import 'package:final_porject_edspert/src/domain/entity/course_entity.dart';
 
 import '../../repository/course_repository.dart';
 

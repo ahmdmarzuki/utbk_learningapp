@@ -1,7 +1,7 @@
-import 'package:final_porject_edspert/src/domain/entity/course_list_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../domain/entity/course_entity.dart';
 import 'widgets/course_card.dart';
 
 class AllCardListScreen extends StatelessWidget {
