@@ -1,4 +1,4 @@
-import 'package:final_porject_edspert/src/presentation/screen/home/widgets/exercise_card.dart';
+import 'package:final_porject_edspert/src/presentation/screen/feature/widgets/exercise_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

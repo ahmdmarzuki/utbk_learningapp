@@ -40,6 +40,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+
+        // Course List provider
         BlocProvider(create: (context) {
           CourseRepository repo = CourseRepositoryImpl(
               remoteDatasource: CourseRemoteDatasource(client: Dio()));
@@ -47,6 +49,8 @@ class MyApp extends StatelessWidget {
               getCoursesUsecase: GetCoursesUsecase(repository: repo))
             ..add(GetCourseListEvent(majorName: 'IPA'));
         }),
+
+        // Exercise List provider
         BlocProvider(create: (context) {
           CourseRepository repo = CourseRepositoryImpl(
               remoteDatasource: CourseRemoteDatasource(client: Dio()));
@@ -54,6 +58,8 @@ class MyApp extends StatelessWidget {
               getExercisesByCourseUsecase:
                   GetExercisesByCourseUsecase(repository: repo));
         }),
+
+        // Question provider
         BlocProvider(create: (context) {
           CourseRepository repo = CourseRepositoryImpl(
               remoteDatasource: CourseRemoteDatasource(client: Dio()));
@@ -67,19 +73,7 @@ class MyApp extends StatelessWidget {
           );
         }),
         BlocProvider(create: (context) => QuestionFormCubit()),
-        // BlocProvider(
-        //   create: (context) =>
-        //       CourseBloc(courseRepository: CourseRepositoryImpl())
-        //         ..add(GetCourseListEvent(majorName: 'IPA')),
-        // ),
-        // BlocProvider(
-        //   create: (context) =>
-        //       CourseExerciseBloc(courseRepository: CourseRepositoryImpl()),
-        // ),
-        // BlocProvider(
-        //   create: (context) =>
-        //       QuestionBloc(questionRepository: CourseRepositoryImpl()),
-        // ),
+        
         BlocProvider(
           create: (context) => AuthBloc(
               SignInWithGoogleUsecase(

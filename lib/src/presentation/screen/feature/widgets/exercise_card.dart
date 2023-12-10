@@ -1,6 +1,6 @@
 import 'package:final_porject_edspert/src/domain/entity/exercise_list_entity.dart';
 import 'package:final_porject_edspert/src/presentation/blocs/course_exercise/course_exercise_bloc.dart';
-import 'package:final_porject_edspert/src/presentation/screen/home/question_screen.dart';
+import 'package:final_porject_edspert/src/presentation/screen/feature/question_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

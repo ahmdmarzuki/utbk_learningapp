@@ -113,7 +113,11 @@ class HomeScreen extends StatelessWidget {
                 BlocBuilder<CourseBloc, CourseState>(
                   builder: (context, state) {
                     print(state.runtimeType);
-                    if (state is CourseFailed) {}
+                    if (state is CourseFailed) {
+                      return Container(
+                          padding: const EdgeInsets.symmetric(vertical: 50),
+                          child: const Text('Tidak ada kuis tersedia'));
+                    }
                     if (state is CourseSuccess) {
                       return ListView.separated(
                         scrollDirection: Axis.vertical,
@@ -129,59 +133,71 @@ class HomeScreen extends StatelessWidget {
                         },
                       );
                     }
-                    return const Center(child: CircularProgressIndicator());
+                    return Container(
+                        padding: const EdgeInsets.symmetric(vertical: 50),
+                        child:
+                            const Center(child: CircularProgressIndicator()));
                   },
                 ),
                 const SizedBox(height: 28),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      "Terbaru",
-                      style: GoogleFonts.poppins(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
                     BlocBuilder<BannerBloc, BannerState>(
                       builder: (context, state) {
-                        if (state is BannerLoading) {}
+                        // if (state is BannerLoading) {
+
+                        // }
 
                         if (state is BannerSucces) {
-                          return SizedBox(
-                            height: 146,
-                            child: ListView.separated(
-                              // physics: const NeverScrollableScrollPhysics(),
-                              scrollDirection: Axis.horizontal,
-                              shrinkWrap: true,
-                              separatorBuilder: (context, index) =>
-                                  const SizedBox(width: 8),
-                              itemCount: state.bannerList.length,
-                              itemBuilder: (context, index) {
-                                return ClipRRect(
-                                  borderRadius: BorderRadius.circular(16),
-                                  child: SizedBox(
-                                    height: 146,
-                                    width: 284,
-                                    child: Image.network(
-                                      state.bannerList[index].eventImage,
-                                      errorBuilder:
-                                          (context, error, stackTrace) {
-                                        return Center(
-                                            child: Text(
-                                          "No Img",
-                                          style:
-                                              GoogleFonts.poppins(fontSize: 8),
-                                        ));
-                                      },
-                                    ),
-                                  ),
-                                );
-                              },
-                            ),
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Terbaru",
+                                style: GoogleFonts.poppins(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                              SizedBox(height: 8),
+                              SizedBox(
+                                height: 146,
+                                child: ListView.separated(
+                                  // physics: const NeverScrollableScrollPhysics(),
+                                  scrollDirection: Axis.horizontal,
+                                  shrinkWrap: true,
+                                  separatorBuilder: (context, index) =>
+                                      const SizedBox(width: 8),
+                                  itemCount: state.bannerList.length,
+                                  itemBuilder: (context, index) {
+                                    return ClipRRect(
+                                      borderRadius: BorderRadius.circular(16),
+                                      child: SizedBox(
+                                        height: 146,
+                                        width: 284,
+                                        child: Image.network(
+                                          state.bannerList[index].eventImage,
+                                          errorBuilder:
+                                              (context, error, stackTrace) {
+                                            return Center(
+                                                child: Text(
+                                              "No Img",
+                                              style: GoogleFonts.poppins(
+                                                  fontSize: 8),
+                                            ));
+                                          },
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ),
+                            ],
                           );
                         }
-                        return const Center(child: CircularProgressIndicator());
+
+                        return const SizedBox();
                       },
                     )
                   ],
