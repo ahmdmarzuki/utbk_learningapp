@@ -1,12 +1,12 @@
 import 'package:final_porject_edspert/src/domain/entity/exercise_list_entity.dart';
 import 'package:final_porject_edspert/src/presentation/blocs/course_exercise/course_exercise_bloc.dart';
-import 'package:final_porject_edspert/src/presentation/screen/feature/question_screen.dart';
+import 'package:final_porject_edspert/src/presentation/screen/courses_and_questions/question_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../utils/color/colors.dart';
-import '../../../../utils/text/heading.dart';
-import '../../../../utils/text/sub_heading1.dart';
+import '../../../widget/text/heading.dart';
+import '../../../widget/text/sub_heading1.dart';
 
 import '../../../blocs/question_bloc/question_bloc.dart';
 import 'card_image.dart';

@@ -4,8 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../domain/entity/course_entity.dart';
 import '../../../blocs/course_exercise/course_exercise_bloc.dart';
 import '../course_exercise_screen.dart';
-import '../../../../utils/text/heading.dart';
-import '../../../../utils/text/sub_heading1.dart';
+import '../../../widget/text/heading.dart';
+import '../../../widget/text/sub_heading1.dart';
 import 'card_image.dart';
 
 class CourseCard extends StatelessWidget {

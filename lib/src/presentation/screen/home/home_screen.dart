@@ -4,14 +4,14 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../../data/repository/banner_repo.dart';
 import '../../../utils/color/colors.dart';
-import '../../../utils/text/appbar_heading.dart';
-import '../../../utils/text/banner_text.dart';
-import '../../../utils/text/heading.dart';
-import '../../../utils/text/sub_heading1.dart';
-import 'widgets/course_card.dart';
+import '../../widget/text/appbar_heading.dart';
+import '../../widget/text/banner_text.dart';
+import '../../widget/text/heading.dart';
+import '../../widget/text/sub_heading1.dart';
+import '../courses_and_questions/widget/course_card.dart';
 import '../../blocs/banner/banner_bloc.dart';
 import '../../blocs/course/course_bloc.dart';
-import 'all_card_list_screen.dart';
+import '../courses_and_questions/all_card_list_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

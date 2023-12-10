@@ -1,8 +1,9 @@
+import 'package:final_porject_edspert/src/presentation/screen/home/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../blocs/auth_bloc/auth_bloc.dart';
-import '../feature/home_screen.dart';
+import '../home/home_screen.dart';
 import 'login_screen.dart';
 import 'register_form_screen.dart';
 
@@ -63,7 +64,7 @@ class _SplashScreenState extends State<SplashScreen> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const HomeScreen(),
+                builder: (context) => const MainScreen(),
               ),
             );
           } else {

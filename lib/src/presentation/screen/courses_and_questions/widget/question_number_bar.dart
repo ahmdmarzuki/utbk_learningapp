@@ -11,11 +11,13 @@ class QuestionNumbersBarWidget extends StatelessWidget {
     required this.questions,
     required this.activeQuestionId,
     required this.questionAnswers,
+    required this.selectedAnswer,
   });
 
   final List<QuestionAnswer> questionAnswers;
   final List<QuestionListDataEntity> questions;
   final String activeQuestionId;
+  final List<String?> selectedAnswer;
 
   @override
   Widget build(BuildContext context) {
@@ -31,10 +33,12 @@ class QuestionNumbersBarWidget extends StatelessWidget {
               children: List.generate(
                 questions.length,
                 (index) {
-                  bool isAnsweredAndPassed = questionAnswers.any(
+                  bool isAnswered = questionAnswers.any(
                     (element) =>
                         element.questionId == questions[index].questionId,
                   );
+                  // bool isAnswered = selectedAnswer.any((element) =>
+                  //       element.questionId == questions[index].questionId,);
 
                   return InkWell(
                     onTap: () {
@@ -53,21 +57,16 @@ class QuestionNumbersBarWidget extends StatelessWidget {
                         border: Border.all(
                           color: HexColor.blue_,
                         ),
-                        color: isAnsweredAndPassed
-                            ? HexColor.blue_
-                            : HexColor.white,
+                        color: isAnswered ? HexColor.blue_ : HexColor.white,
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Center(
                         child: Text(
                           '${index + 1}',
                           style: TextStyle(
-                            fontWeight: isAnsweredAndPassed
-                                ? FontWeight.w800
-                                : FontWeight.w400,
-                            color: isAnsweredAndPassed
-                                ? HexColor.white
-                                : HexColor.blue_,
+                            fontWeight:
+                                isAnswered ? FontWeight.w800 : FontWeight.w400,
+                            color: isAnswered ? HexColor.white : HexColor.blue_,
                             fontSize: 16,
                           ),
                         ),

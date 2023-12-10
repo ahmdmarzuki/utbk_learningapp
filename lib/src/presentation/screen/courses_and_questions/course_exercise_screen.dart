@@ -1,10 +1,10 @@
-import 'package:final_porject_edspert/src/presentation/screen/feature/widgets/exercise_card.dart';
+import 'package:final_porject_edspert/src/presentation/screen/courses_and_questions/widget/exercise_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../utils/color/colors.dart';
-import '../../../utils/text/banner_text.dart';
-import '../../../utils/text/heading.dart';
+import '../../widget/text/banner_text.dart';
+import '../../widget/text/heading.dart';
 import '../../blocs/course_exercise/course_exercise_bloc.dart';
 
 class CourseExerciseScreen extends StatefulWidget {

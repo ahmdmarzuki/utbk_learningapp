@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:final_porject_edspert/src/data/datasource/remote/course_remote_datasource.dart';
-import 'package:final_porject_edspert/src/data/datasource/remote/question_remote_datasource.dart';
 import 'package:final_porject_edspert/src/domain/entity/exercise_list_entity.dart';
 import 'package:final_porject_edspert/src/domain/repository/course_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -175,27 +174,4 @@ class CourseRepositoryImpl implements CourseRepository {
 
     return result;
   }
-
-  // Future<List<QuestionData>> getQuestionList(String exerciseId) async {
-  //   try {
-  //     const url = 'https://edspert.widyaedu.com/exercise/kerjakan/';
-  //     final response = await Dio().post(
-  //       url,
-  //       options: Options(
-  //         headers: {"x-api-key": "18be70c0-4e4d-44ff-a475-50c51ece99a0"},
-  //       ),
-  //       data: {
-  //         "course_id": exerciseId,
-  //         "user_email": "testerngbayu@gmail.com",
-  //       },
-  //     );
-
-  //     final questionData = QuestionResponse.fromJson(response.data);
-  //     return questionData.data;
-  //   } catch (e) {
-  //     print('Error at QuestionRepository getQuestionList $e');
-
-  //     rethrow;
-  //   }
-  // }
 }
