@@ -12,7 +12,7 @@ class CourseCard extends StatelessWidget {
   final CourseDataEntity course;
   // final ExerciseData exercise;
 
-  const CourseCard({super.key, required this.course });
+  const CourseCard({super.key, required this.course});
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +22,9 @@ class CourseCard extends StatelessWidget {
       builder: (context, state) {
         return InkWell(
           onTap: () {
-            context.read<CourseExerciseBloc>().add(GetCourseExerciseEvent(
-                courseId: course.courseId));
+            context
+                .read<CourseExerciseBloc>()
+                .add(GetCourseExerciseEvent(courseId: course.courseId));
 
             Navigator.push(
               context,
@@ -51,7 +52,7 @@ class CourseCard extends StatelessWidget {
                           text: course.courseName,
                           color: Colors.black,
                         ),
-                        SubHeading1(
+                        SubHeading(
                             text: "${course.jumlahDone}/${course.jumlahMateri} "
                                 "Paket Latihan Soal"),
                         const SizedBox(height: 11),

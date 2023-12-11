@@ -12,12 +12,14 @@ class QuestionNumbersBarWidget extends StatelessWidget {
     required this.activeQuestionId,
     required this.questionAnswers,
     required this.selectedAnswer,
+    required this.activeQuestionindex,
   });
 
   final List<QuestionAnswer> questionAnswers;
   final List<QuestionListDataEntity> questions;
   final String activeQuestionId;
   final List<String?> selectedAnswer;
+  final int activeQuestionindex;
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +44,8 @@ class QuestionNumbersBarWidget extends StatelessWidget {
 
                   return InkWell(
                     onTap: () {
+                      // print(index);
+                      // print(activeQuestionindex);
                       context.read<QuestionFormCubit>().navigateToQuestionIndex(
                             index: index,
                             questions: questions,
@@ -57,7 +61,13 @@ class QuestionNumbersBarWidget extends StatelessWidget {
                         border: Border.all(
                           color: HexColor.blue_,
                         ),
-                        color: isAnswered ? HexColor.blue_ : HexColor.white,
+                        color: activeQuestionindex == index && !isAnswered
+                            ? Colors.blue.shade100
+                            : activeQuestionindex == index && isAnswered
+                                ? Colors.blue.shade800
+                                : isAnswered
+                                    ? HexColor.blue_
+                                    : HexColor.white,
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Center(

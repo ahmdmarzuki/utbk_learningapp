@@ -56,7 +56,7 @@ class ExerciseCard extends StatelessWidget {
                     children: [
                       Heading(
                           text: exercise.exerciseTitle, color: HexColor.black),
-                      SubHeading1(
+                      SubHeading(
                         text: "${exercise.jumlahDone}/${exercise.jumlahSoal}",
                         color: HexColor.grey,
                       )

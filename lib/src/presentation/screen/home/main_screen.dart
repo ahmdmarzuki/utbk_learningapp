@@ -19,16 +19,16 @@ class _MainScreenState extends State<MainScreen> {
     Widget body() {
       switch (currentindex) {
         case 0:
-          return HomeScreen();
+          return const HomeScreen();
         case 1:
-          return ProfileScreen();
+          return const ProfileScreen();
         default:
-          return HomeScreen();
+          return const HomeScreen();
       }
     }
 
     return Scaffold(
-        floatingActionButton: FloatingButtonHome(),
+        floatingActionButton: const FloatingButtonHome(),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar: BottomNavigationBar(
           showUnselectedLabels: false,
@@ -43,15 +43,22 @@ class _MainScreenState extends State<MainScreen> {
           items: [
             BottomNavigationBarItem(
               icon: Container(
-                child: Image.asset('assets/icon/home_icon.png',
-                    width: currentindex == 0 ? 28 : 24),
+                margin: const EdgeInsets.only(top: 10, bottom: 10),
+                child: Image.asset(
+                  'assets/icon/home_icon.png',
+                  width: currentindex == 0 ? 28 : 24,
+                  color: currentindex == 0 ? null : HexColor.grey,
+                ),
               ),
               label: 'Home',
             ),
             BottomNavigationBarItem(
                 icon: Container(
-                  child: Image.asset('assets/icon/profile_icon.png',
-                      width: currentindex == 1 ? 28 : 24),
+                  margin: const EdgeInsets.only(top: 10, bottom: 10),
+                  child: Image.asset(
+                    'assets/icon/profile_icon.png',
+                    width: currentindex == 1 ? 28 : 24,
+                  ),
                 ),
                 label: 'Profile')
           ],

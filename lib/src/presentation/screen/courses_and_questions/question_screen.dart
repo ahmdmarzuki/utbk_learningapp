@@ -22,9 +22,6 @@ import '../../blocs/course/course_bloc.dart';
 import '../../blocs/question_bloc/question_bloc.dart';
 
 class QuestionScreen extends StatefulWidget {
-  // final ExerciseDataEntity exercise;
-  // final CourseRemoteDatasource? remoteDatasource;
-
   const QuestionScreen({super.key});
 
   @override
@@ -91,12 +88,12 @@ class _QuestionScreenState extends State<QuestionScreen> {
 
               return Column(
                 children: [
-                  // Text(selectedAnswer.toString()),
                   QuestionNumbersBarWidget(
                     questions: questions,
                     activeQuestionId: activeQuestionId,
                     questionAnswers: state.questionAnswers,
                     selectedAnswer: selectedAnswers,
+                    activeQuestionindex: activeQuestionindex,
                   ),
                   Expanded(
                     child: Container(
@@ -105,11 +102,11 @@ class _QuestionScreenState extends State<QuestionScreen> {
                         shrinkWrap: true,
                         padding: const EdgeInsets.all(8),
                         children: [
-                          SubHeading1(
+                          SubHeading(
                             text:
                                 "Soal nomor ${(activeQuestionindex.toInt() + 1).toString()}",
                             color: HexColor.grey,
-                            fontSize: 14,
+                            fontSize: 16,
                           ),
                           const SizedBox(height: 30),
                           HtmlWidget(
@@ -151,7 +148,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                               activeQuestionId: activeQuestionId,
                               activeQuestion: activeQuestion,
                               optionType: 'E'),
-                          SizedBox(height: 30),
+                          const SizedBox(height: 30),
                           SizedBox(
                             child: activeQuestionindex < questions.length - 1
                                 ? Container()
@@ -170,7 +167,10 @@ class _QuestionScreenState extends State<QuestionScreen> {
                                       context.read<QuestionBloc>().add(
                                             SubmitAnswerEvent(
                                               request: SubmitAnswerRequestModel(
-                                                  userEmail: '',
+                                                  userEmail: context
+                                                          .read<AuthBloc>()
+                                                          .getCurrentSignedInEmail() ??
+                                                      '',
                                                   exerciseId: exerciseId,
                                                   questionIds: questionIds,
                                                   answers: answers),
@@ -190,7 +190,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                                           borderRadius:
                                               BorderRadius.circular(12)),
                                       child: Center(
-                                        child: SubHeading1(
+                                        child: SubHeading(
                                           text: "Kumpulkan Jawaban",
                                           fontSize: 16,
                                           color: HexColor.white,

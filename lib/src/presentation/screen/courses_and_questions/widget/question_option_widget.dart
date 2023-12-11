@@ -46,7 +46,7 @@ class QuestionOptionWidget extends StatelessWidget {
             border: Border.all(color: HexColor.grey.withAlpha(70)),
             borderRadius: BorderRadius.circular(12)),
         child: Row(children: [
-          SubHeading1(
+          SubHeading(
             text: optionType == 'A'
                 ? "A."
                 : optionType == 'B'
@@ -84,23 +84,3 @@ class QuestionOptionWidget extends StatelessWidget {
     );
   }
 }
-
-// List<String> questionIds = state
-//                                           .questionAnswers
-//                                           .map((e) => e.questionId)
-//                                           .toList();
-//                                       List<String> answers = state
-//                                           .questionAnswers
-//                                           .map((e) => e.answer)
-//                                           .toList();
-//                                       context.read<QuestionBloc>().add(
-//                                             SubmitAnswerEvent(
-//                                               request: SubmitAnswerRequestModel(
-//                                                   userEmail: '',
-//                                                   exerciseId: exerciseId,
-//                                                   questionIds: questionIds,
-//                                                   answers: answers),
-//                                             ),
-                                            
-//                                           );
-//                                           Navigator.pop(context);

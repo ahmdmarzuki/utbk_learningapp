@@ -8,6 +8,7 @@ import 'package:final_porject_edspert/src/domain/usecases/courses_usecases/get_e
 import 'package:final_porject_edspert/src/domain/usecases/courses_usecases/get_question_by_exercise_usecase.dart';
 import 'package:final_porject_edspert/src/domain/usecases/courses_usecases/submit_exercise_answer.dart';
 import 'package:final_porject_edspert/src/presentation/blocs/question_bloc/question_form_cubit/question_form_cubit.dart';
+import 'package:final_porject_edspert/src/utils/color/colors.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -40,7 +41,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-
         // Course List provider
         BlocProvider(create: (context) {
           CourseRepository repo = CourseRepositoryImpl(
@@ -73,7 +73,7 @@ class MyApp extends StatelessWidget {
           );
         }),
         BlocProvider(create: (context) => QuestionFormCubit()),
-        
+
         BlocProvider(
           create: (context) => AuthBloc(
               SignInWithGoogleUsecase(
@@ -101,10 +101,10 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
+        // theme: ThemeData(
+        //   // colorScheme: ColorScheme.fromSeed(seedColor: HexColor.blue_),
+        //   useMaterial3: true,
+        // ),
         home: const SplashScreen(),
       ),
     );

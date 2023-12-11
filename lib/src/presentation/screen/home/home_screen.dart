@@ -28,12 +28,18 @@ class HomeScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor: HexColor.whiteBackground,
         appBar: AppBar(
-          title: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              AppbarHeading(text: "Hello, Marzuki", color: HexColor.black),
-              SubHeading1(text: "Selamat Datang")
-            ],
+          backgroundColor: HexColor.whiteBackground,
+          elevation: 0,
+          automaticallyImplyLeading: false,
+          title: Container(
+            padding: EdgeInsets.only(left: 12),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                AppbarHeading(text: "Hello, Marzuki", color: HexColor.black),
+                SubHeading(text: "Selamat Datang")
+              ],
+            ),
           ),
           actions: const [
             Padding(
@@ -91,7 +97,7 @@ class HomeScreen extends StatelessWidget {
                                   ),
                                 );
                               },
-                              child: SubHeading1(
+                              child: SubHeading(
                                 text: "Lihat Semua",
                                 color: HexColor.blue_,
                               ));
